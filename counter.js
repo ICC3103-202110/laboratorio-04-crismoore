@@ -10,14 +10,14 @@ function update(msg,counter) {
 
         case "+":
             counter++;
-            return (counter++);
+            return (counter);
   
         case "-":
             counter--;
-            return (counter--);
-
+            return (counter);
+        
         default:
-            console.log("No such option. Please enter another: ");
+            return (counter);
 
     }
 }
@@ -31,19 +31,16 @@ function app(counter) {
     currentView(counter)
     console.log("\n (+)  (-)")
     console.log("\n (q) for quit")
-
     readline.question("\n Please choose an option: ", message => {
+        
         if (message==='q'){
             readline.close();
-        } 
-            
+        }   
         else {
             let count = update(message,counter);
             app(count);
-        
         }
-    });
-    
+    });   
 };
 
 app(0);

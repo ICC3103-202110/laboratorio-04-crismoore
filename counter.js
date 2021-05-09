@@ -4,35 +4,46 @@ const readline = require('readline').createInterface({
     output: process.stdout
     })
 
-const functionview = counter => {
+function update(msg,counter) {
+
+    switch (msg){
+
+        case "+":
+            counter++;
+            return (counter++);
+  
+        case "-":
+            counter--;
+            return (counter--);
+
+        default:
+            console.log("No such option. Please enter another: ");
+
+    }
+}
+
+const currentView = counter => {
     console.log("\n Count: "+counter)
+}
+
+function app(counter) {
+    console.clear()
+    currentView(counter)
     console.log("\n (+)  (-)")
     console.log("\n (q) for quit")
 
-    readline.question("Please choose an option: "
-        , function(operation) {
-            switch (operation){
-
-                case "+":
-                    counter++;
-                    break;
-                
-                case "-":
-                    counter--;
-                    break;
-
-                case "q":
-                    return readline.close();
-                    break;
-                
-                default:
-                    console.log("No such option. Please enter another: ");
+    readline.question("\n Please choose an option: ", message => {
+        if (message==='q'){
+            readline.close();
+        } 
+            
+        else {
+            let count = update(message,counter);
+            app(count);
+        
         }
-    functionview(counter);
     });
-
+    
 };
 
-functionview(0);
-
-
+app(0);

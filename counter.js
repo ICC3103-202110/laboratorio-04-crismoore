@@ -23,14 +23,14 @@ function update(msg,counter) {
 }
 
 const currentView = counter => {
-    console.log("\n Count: "+counter)
+    return (counter);
 }
 
 function app(counter) {
-    console.clear()
-    currentView(counter)
-    console.log("\n (+)  (-)")
-    console.log("\n (q) for quit")
+    console.clear();
+    console.log("\n Count: "+currentView(counter));
+    console.log("\n (+)  (-)");
+    console.log("\n (q) for quit");
     readline.question("\n Please choose an option: ", message => {
         
         if (message==='q'){
